@@ -13,20 +13,8 @@ import com.baseball.user.session.proxy.actionStrategy.factory.UserActionStrategy
 
 public class SingleGameUserProxy extends BaseUserProxy {
 	
-	public SingleGameUserProxy(String userId, GameEngine engine, UserInterface ui) {
-		super(userId, engine,ui);
-	}
-
-	@Override
-	public String requestNewGame(String id) {
-		
-		return null;
-	}
-
-	@Override
-	public GuessResultVO guessNextOne(String guess) {
-		// TODO Auto-generated method stub
-		return null;
+	public SingleGameUserProxy(String userId, UserInterface ui) {
+		super(userId,ui);
 	}
 
 	@Override
@@ -44,9 +32,7 @@ public class SingleGameUserProxy extends BaseUserProxy {
 	@Override
 	public UserActionStrategy prompt() {
 		
-		this.sendUserMsg("what is your next Action?"+
-						  "1 . REQUEST_NEW_GAME"+
-						  "2 . REQ_USER_INFO");
+		this.sendUserMsg(createPromptNextMessage());
 		String nextAction = this.getUserInput();
 
 		if(nextAction.equals(UserActionStrategeConsts.REQ_USER_INFO)) {
@@ -57,8 +43,19 @@ public class SingleGameUserProxy extends BaseUserProxy {
 			return UserActionStrategyFactory.getUserActionStrategy(ActionEnum.REQUEST_NEW_GAME, this);
 		}
 		
+		if(nextAction.equals(UserActionStrategeConsts.EXIT)) {
+			return UserActionStrategyFactory.getUserActionStrategy(ActionEnum.EXIT, this);
+		}
+		
 		throw new IllegalStateException("not implemented");
 
+	}
+
+	private String createPromptNextMessage() {
+		return "what is your next Action?\n\n"+
+			   "1 . REQUEST_NEW_GAME\n"+
+			   "2 . REQ_USER_INFO\n"+
+			   "-1 . Exit Game";
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import com.baseball.user.session.proxy.UserProxy;
 import com.baseball.user.session.proxy.actionStrategy.UserActionStrategy;
 import com.baseball.user.session.proxy.actionStrategy.consts.UserActionStrategeConsts;
 import com.baseball.user.session.proxy.actionStrategy.enums.ActionEnum;
+import com.baseball.user.session.proxy.actionStrategy.imple.ExitGameStrategy;
 import com.baseball.user.session.proxy.actionStrategy.imple.GetCurrentUserInfoStrategy;
 import com.baseball.user.session.proxy.actionStrategy.imple.RequestNewGameAndStartStrategy;
 
@@ -13,6 +14,11 @@ public class UserActionStrategyFactory {
 
 
 	public static UserActionStrategy getUserActionStrategy(ActionEnum type, Object obj) {
+		
+		if(type.getType().equals(UserActionStrategeConsts.EXIT)) {
+			if(obj instanceof UserProxy) return new ExitGameStrategy((UserProxy)obj );
+			return new ExitGameStrategy((UserProxy)obj);
+		}
 		
 		if(type.getType().equals(UserActionStrategeConsts.REQ_USER_INFO)) {
 			return new GetCurrentUserInfoStrategy(obj);
