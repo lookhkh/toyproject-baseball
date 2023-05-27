@@ -7,5 +7,5 @@ public interface UserSessionManager {
 	public void showMenu();
 	
 	public UserProxy selectGameMode();
-	public String registerUserId();
+	public void registerUserId();
 }

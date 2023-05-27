@@ -18,9 +18,15 @@ public class EntryPoint {
 		
 		manager.showMenu();
 		
-		String userId = manager.registerUserId();
+		manager.registerUserId();
 		
 		UserProxy userProxy = manager.selectGameMode();
+		
+		if(userProxy == null) return;
+		
+		System.out.println("게임 시작");
+		
+
 		
 	}
 }
