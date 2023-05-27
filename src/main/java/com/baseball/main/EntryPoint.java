@@ -7,6 +7,7 @@ import com.baseball.user.session.manager.UserSessionManager;
 import com.baseball.user.session.manager.ui.CLIUserInterface;
 import com.baseball.user.session.manager.ui.UserInterface;
 import com.baseball.user.session.proxy.UserProxy;
+import com.baseball.user.session.proxy.actionStrategy.UserActionStrategy;
 
 public class EntryPoint {
   
@@ -26,7 +27,10 @@ public class EntryPoint {
 		
 		System.out.println("게임 시작");
 		
-
-		
+		while(true) {
+			
+			UserActionStrategy action = userProxy.prompt();
+			action.work();
+		}
 	}
 }

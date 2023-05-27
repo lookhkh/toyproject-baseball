@@ -44,7 +44,8 @@ public class CLIUserSessionManager implements UserSessionManager {
 		}else if(mode.equals("1")) {
 			ui.sendMessage("singleMode를 선택하였습니다.");
 			
-			return new SingleGameUserProxy(this.id, GameEngineFactory.getGameEngineFactory(FactoryType.DEFAULT_FACTORY) );
+			return 
+				new SingleGameUserProxy(this.id,GameEngineFactory.getGameEngineFactory(FactoryType.DEFAULT_FACTORY),this.ui);
 			
 		}
 		
