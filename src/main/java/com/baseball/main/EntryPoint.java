@@ -25,7 +25,7 @@ public class EntryPoint {
 		
 		if(userProxy == null) return;
 		
-		System.out.println("게임 시작");
+		userProxy.sendMessage("Game On");
 		
 		while(true) {
 			

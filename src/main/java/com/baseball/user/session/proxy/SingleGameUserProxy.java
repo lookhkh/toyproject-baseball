@@ -44,16 +44,27 @@ public class SingleGameUserProxy extends BaseUserProxy {
 	@Override
 	public UserActionStrategy prompt() {
 		
-		this.sendUserMsg("what is your next Action?");
+		this.sendUserMsg("what is your next Action?"+
+						  "1 . REQUEST_NEW_GAME"+
+						  "2 . REQ_USER_INFO");
 		String nextAction = this.getUserInput();
 
 		if(nextAction.equals(UserActionStrategeConsts.REQ_USER_INFO)) {
 			return UserActionStrategyFactory.getUserActionStrategy(ActionEnum.getEnum(nextAction), new UserInfoDTO());
 		}
 		
+		if(nextAction.equals(UserActionStrategeConsts.REQUEST_NEW_GAME)) {
+			return UserActionStrategyFactory.getUserActionStrategy(ActionEnum.REQUEST_NEW_GAME, this);
+		}
+		
 		throw new IllegalStateException("not implemented");
 
 	}
 
+	@Override
+	public void sendMessage(String message) {
+		this.sendUserMsg(message);
+	}
+	
 	
 }

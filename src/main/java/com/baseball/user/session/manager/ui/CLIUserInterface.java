@@ -20,6 +20,4 @@ public class CLIUserInterface implements UserInterface {
 		System.out.println(msg);
 		System.out.println();
 	}
-
-	
 }

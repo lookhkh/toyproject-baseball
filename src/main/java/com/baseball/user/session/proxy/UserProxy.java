@@ -13,5 +13,7 @@ public interface UserProxy {
 	public UserInfoDTO getMyInfo(String id);
 	public List<UserInfoDTO> getUserRanking(int limit);
 	public UserActionStrategy prompt();
+	public void sendMessage(String message);
+	public String getUserInput();
 	
 }

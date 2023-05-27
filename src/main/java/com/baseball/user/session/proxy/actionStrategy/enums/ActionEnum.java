@@ -6,7 +6,7 @@ import com.baseball.user.session.proxy.actionStrategy.consts.UserActionStrategeC
 
 public enum ActionEnum {
 
-	REQUEST_NEW_GAME("1"), NEXT_GUESS("2"), MY_INFO(UserActionStrategeConsts.REQ_USER_INFO), GET_RANKINGS("4");
+	REQUEST_NEW_GAME(UserActionStrategeConsts.REQUEST_NEW_GAME),  MY_INFO(UserActionStrategeConsts.REQ_USER_INFO), GET_RANKINGS(UserActionStrategeConsts.GET_RANKINGS);
 	
 	private String type;
 	
@@ -20,10 +20,9 @@ public enum ActionEnum {
 	}
 
 	public static ActionEnum getEnum(String type) {
-		if(type.equals("1")) return ActionEnum.REQUEST_NEW_GAME;
-		if(type.equals("2")) return ActionEnum.NEXT_GUESS;
+		if(type.equals(UserActionStrategeConsts.REQUEST_NEW_GAME)) return ActionEnum.REQUEST_NEW_GAME;
 		if(type.equals(UserActionStrategeConsts.REQ_USER_INFO)) return ActionEnum.MY_INFO;
-		if(type.equals("4")) return ActionEnum.GET_RANKINGS;
+		if(type.equals(UserActionStrategeConsts.GET_RANKINGS)) return ActionEnum.GET_RANKINGS;
 		throw new NoSuchElementException(type+" dosen`t exist");
 	}
 }

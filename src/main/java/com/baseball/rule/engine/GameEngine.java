@@ -8,4 +8,6 @@ public interface GameEngine {
 
 	public GuessResultVO guessNextOne(String gameId, String nextUserGuess);
 
+	public GuessResultVO getCurrentStatus(String gameId);
+
 }
