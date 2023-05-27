@@ -59,7 +59,7 @@ public class RequestNewGameAndStartStrategy implements UserActionStrategy {
 	}
 
 	private String createGiveUpMessage(GuessResultVO curStatus) {
-		return "game을 포기하였습니다. "+curStatus;
+		return "game을 포기하였습니다.\n"+  createGameStatusMessage(curStatus);
 	}
 
 	private boolean doesClientGiveUp(String nextUserGuess) {
