@@ -35,6 +35,7 @@ public class RequestNewGameAndStartStrategy implements UserActionStrategy {
 			if(doesClientGiveUp(nextUserGuess)) {
 				GuessResultVO curStatus = engine.getCurrentStatus(gameId);
 				proxy.sendMessage(createGiveUpMessage(curStatus));
+				engine.finishCurrentGame(gameId);
 				return;
 			}
 			
@@ -42,6 +43,7 @@ public class RequestNewGameAndStartStrategy implements UserActionStrategy {
 			
 			if(result.isDone()) {
 				proxy.sendMessage(createGameWinMessage(nextUserGuess));
+				engine.finishCurrentGame(gameId);
 				gameStatus = -1;
 			}else {
 				proxy.sendMessage(createGameStatusMessage(result));

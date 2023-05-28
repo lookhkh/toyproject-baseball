@@ -31,6 +31,7 @@ public class EntryPoint {
 			
 			UserActionStrategy action = userProxy.prompt();
 			action.work();
+			
 		}
 	}
 }

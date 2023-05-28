@@ -61,4 +61,9 @@ public class SimpleGameEngine implements GameEngine {
 		return manager.findById(gameId);
 	}
 
+	@Override
+	public void finishCurrentGame(String gameId) {
+		manager.removeGame(gameId);
+	}
+
 }

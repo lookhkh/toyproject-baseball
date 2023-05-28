@@ -14,7 +14,9 @@ public class ExitGameStrategy implements UserActionStrategy {
 	@Override
 	public void work() {
 		proxy.sendMessage("Really Want to Exit?");
+		
 		String answer = proxy.getUserInput();
+		
 		if(answer.contains("y") || answer.contains("Y")) {
 			proxy.sendMessage("Bye "+proxy.getUserId());
 			System.exit(0);

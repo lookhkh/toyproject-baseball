@@ -10,4 +10,6 @@ public interface GameEngine {
 
 	public GuessResultVO getCurrentStatus(String gameId);
 
+	public void finishCurrentGame(String gameId);
+
 }

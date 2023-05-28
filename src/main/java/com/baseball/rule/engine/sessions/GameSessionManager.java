@@ -8,4 +8,6 @@ public interface GameSessionManager {
 
 	public GuessResultVO findById(String gameId);
 
+	public void removeGame(String gameId);
+
 }

@@ -26,5 +26,12 @@ public class InMemoryGameSessionManager implements GameSessionManager {
 		
 	}
 
+	@Override
+	public void removeGame(String gameId) {
+		if(this.map.containsKey(gameId)) this.map.remove(gameId);
+		throw new NoSuchElementException(gameId+" doesn`t exist");
+		
+	}
+
 	
 }
