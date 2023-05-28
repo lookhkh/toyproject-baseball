@@ -43,9 +43,7 @@
 
   디자인 주안점
   
-  1. 사용자의 다양한 액션 ( 게임의 모드 선택, 사용자 정보 검색, 랭킹 검색 등 )을 확장가능하게 개발하기 위하여 전략패턴을 사용하였다. 유저의 입력값에 따라 팩토리 메소드에서 유저의 입력값에   상응하는 전략이 선택 및 실행된다.
-  2. 멀티모드, 싱글모드에 따른 변경 요소에 대응하기 위하여 코드 내에서 각각의 객체는 interface로만 메시지를 주고 받을 수 있도록 하였다.
- 
+  1. 사용자의 다양한 액션 ( 게임의 모드 선택, 사용자 정보 검색, 랭킹 검색 등 )을 확장가능하게 개발하기 위하여 전략패턴을 사용하였다. 유저의 입력값에 따라 팩토리 메소드에서 유저의 입력값에   상응하는 전략이 선택 및 실행된다. 
  ```
  public class UserActionStrategyFactory {
 
@@ -71,7 +69,35 @@
 }
 
  ```
-
+  2. 멀티모드, 싱글모드에 따른 변경 요소에 대응하기 위하여 코드 내에서 각각의 객체는 interface로만 메시지를 주고 받을 수 있도록 하였다.
+  ```
+  public class EntryPoint {
+  
+	public static void main(String[] args) {
+		
+		UserInterface ui = new CLIUserInterface(new Scanner(System.in));
+		
+		UserSessionManager manager = new CLIUserSessionManager(ui);
+		
+		manager.showMenu();
+		
+		manager.registerUserId();
+		
+		UserProxy userProxy = manager.selectGameMode();
+		
+		if(userProxy == null) return;
+		
+		userProxy.sendMessage("Game On");
+		
+		while(true) {
+			
+			UserActionStrategy action = userProxy.prompt();
+			action.work();
+			
+		}
+	}
+}
+  ```
 
 Release Note
 
